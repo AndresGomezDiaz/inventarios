@@ -1,11 +1,10 @@
 <?php
 if (!defined('BASEPATH')){ exit('No direct script access allowed'); }
 
-class Almacen extends CI_Controller {
+class AlmacenAlta extends CI_Controller {
 	public function __construct(){
 		parent::__construct();
 		$this->load->model(array('Empresa_model', 'Almacen_model'));
-		$this->load->helper('rfc_helper', 'uuidV4_helper');
   }
 
 	public function index(){
@@ -16,8 +15,8 @@ class Almacen extends CI_Controller {
 		$data = array(
 					"nomToken"		=> $this->security->get_csrf_token_name(),
 					"valueToken"	=> $this->security->get_csrf_hash(),
-					"nombre"		=> empty(set_value('nombre')) ? "" : set_value('nombre'),
-					"empresa"		=> empty(set_value('empresa')) ? "" : set_value('empresa'),
+					"nombre"			=> empty(set_value('nombre')) ? "" : set_value('nombre'),
+					"empresa"			=> empty(set_value('empresa')) ? "" : set_value('empresa'),
 					"empresas"		=> $empresas
 					);
 
@@ -37,8 +36,8 @@ class Almacen extends CI_Controller {
 			$data = array(
 							"nomToken"			=> $this->security->get_csrf_token_name(),
 							"valueToken"		=> $this->security->get_csrf_hash(),
-							"empresa"			=> empty(set_value('empresa')) ? $infoAlmacen->id_empresa : set_value('empresa'),
-							"nombre"			=> empty(set_value('nombre')) ? $infoAlmacen->nombre : set_value('nombre'),
+							"empresa"				=> empty(set_value('empresa')) ? $infoAlmacen->empresa_id : set_value('empresa'),
+							"nombre"				=> empty(set_value('nombre')) ? $infoAlmacen->nombre : set_value('nombre'),
 							"empresas"			=> $empresas,
 							"registro"			=> $registro
 							);
@@ -72,13 +71,13 @@ class Almacen extends CI_Controller {
 			if(isset($registro)){
 				$data = array(
 								"nombre"=>$this->input->post('nombre'),
-								"id_empresa"=>$this->input->post('empresa')
+								"empresa_id"=>$this->input->post('empresa')
 								);
 				$this->Almacen_model->updateAlmacen($registro, $data);
 			}else{
 				$data = array(
 								"nombre"=>$this->input->post('nombre'),
-								"id_empresa"=>$this->input->post('empresa')
+								"empresa_id"=>$this->input->post('empresa')
 								);
 				$this->Almacen_model->createAlmacen($data);
 			}

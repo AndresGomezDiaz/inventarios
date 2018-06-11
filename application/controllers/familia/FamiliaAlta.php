@@ -5,7 +5,7 @@ class FamiliaAlta extends CI_Controller {
 	public function __construct(){
     parent::__construct();
 		$this->load->model('Familia_model');
-    $this->load->helper(array('form', 'uuidV4_helper'));
+    $this->load->helper('uuidV4_helper');
   }
 
 	public function index(){

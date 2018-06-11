@@ -29,7 +29,7 @@ if(isset($registro)){
 				<select name="vendedor" id="vendedor" estadoattri='' class="form-control col-md-7 col-xs-12" required="required">
 					<option value="">Seleccione</option>
 					<?php foreach($empresas->result() as $infoEmpresa):?>
-					<option value="<?=$infoEmpresa->id_empresa?>" <?=empty($empresa) ? "" : ($empresa == $infoEmpresa->id_empresa) ? "selected" : ""?> ><?=$infoEmpresa->nombre.' '.$infoEmpresa->apellido ?></option>
+					<option value="<?=$infoEmpresa->id?>" <?=empty($empresa) ? "" : ($empresa === $infoEmpresa->id) ? "selected" : ""?> ><?=$infoEmpresa->nombre_comercial?></option>
 					<?php endforeach; ?>
 				</select>
 				<?php echo form_error('vendedor'); ?>

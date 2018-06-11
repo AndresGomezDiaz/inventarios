@@ -4,9 +4,8 @@ if (!defined('BASEPATH')){ exit('No direct script access allowed'); }
 class EmpresaAlta extends CI_Controller {
 	public function __construct(){
 		parent::__construct();
-		$this->load->library('form_validation');
 		$this->load->model('Empresa_model');
-		$this->load->helper(array('form', 'rfc_helper'));
+		$this->load->helper('rfc_helper');
   }
 
 	public function index(){

@@ -12,8 +12,8 @@ class Almacen extends CI_Controller {
 		if($this->session->userdata('perfil') == FALSE){
 			redirect(base_url().'login');
 		}
-		$almacenes = $this->Empresa_model->getAlmacenes();
-		$data = array("almacenes" => $almacenes)
+		$almacenes = $this->Almacen_model->getAlmacenes();
+		$data = array("almacenes" => $almacenes);
 		
 		$this->template->add_css();
 		$this->template->add_js();
