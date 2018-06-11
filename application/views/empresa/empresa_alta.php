@@ -41,7 +41,7 @@ if(isset($registro)){
 		<div class="form-group">
 			<div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
 				<button type="submit" class="btn btn-success">Guardar</button>
-				<a class="btn btn-default" href="<?=base_url().'usuarios'?>">Cancelar</a>
+				<a class="btn btn-default" href="<?=base_url().'empresa'?>">Cancelar</a>
 			</div>
 		</div>
 	<?=form_close()?>

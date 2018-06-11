@@ -35,7 +35,7 @@
                   <li><a href="<?=base_url().'almacen'?>"><i class="fa fa-home"></i> Almacen</a></li>
                   <li><a><i class="fa fa-users"></i> Producto <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="<?=base_url().'home'?>">Familia</a></li>
+                      <li><a href="<?=base_url().'familia'?>">Familia</a></li>
                       <li><a href="<?=base_url().'home'?>">Materia prima</a></li>
                       <li><a href="<?=base_url().'home'?>">Recetas</a></li>
                     </ul>

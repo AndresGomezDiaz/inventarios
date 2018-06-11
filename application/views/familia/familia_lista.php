@@ -3,11 +3,9 @@
 ?>
 <input type="hidden" name="liga" id="liga" value="<?=base_url()?>">
 <div class="x_title">
-	<h2>Almacenes registrados</h2>
+	<h2>Familias registradas</h2>
 	<ul class="nav navbar-right panel_toolbox">
-		<li><button type="button" class="btn btn-success" style="color:#fff" onclick="location.href='<?=base_url().'registrar_almacen'?>'">
-			<i class="fa fa-plus"></i> Registrar
-		</button></li>
+		<li><button type="button" class="btn btn-success" style="color:#fff" onclick="location.href='<?=base_url().'registrar_empresa'?>'"><i class="fa fa-plus"></i> Registrar</button></li>
 	</ul>
 </div>
 <div class="clearfix"></div>
@@ -15,19 +13,16 @@
 	<table id="datatable" class="table table-striped table-bordered">
 	  <thead>
 	    <tr>
-			<th style="text-align:center">Nombre</th>
-			<th style="text-align:center">Estatus</th>
-			<th style="text-align:center">Opciones</th>
+        <th style="text-align:center">Nombre</th>
+        <th style="text-align:center">Opciones</th>
 	    </tr>
 	  </thead>
 	  <tbody>
-	  		<?php foreach($almacenes->result() as $info): ?>
-	  		<td><?=$info->nombre?></td>
-	  		<td><?=($info->status == 1) ? 'Activo' : 'Inactivo'?></td>
-	  		<td <td style="text-align:center;">>
+	  		<?php foreach($familias->result() as $info): ?>
+	  		<td><?=$info->nombre_comercial?></td>
+	  		<td style="text-align:center;">
 	  			<a href="#"><i class="fa fa-trash"></i></a>&nbsp;&nbsp;&nbsp;
 	  			<a href="#"><i class="fa fa-pencil"></i></a>&nbsp;&nbsp;&nbsp;
-	  			<a href="#"><i class="fa fa-ban"></i></a>&nbsp;&nbsp;&nbsp;
 	  		</td>
 	  		<?php endforeach; ?>
 	  </tbody>

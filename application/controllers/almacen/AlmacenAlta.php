@@ -5,7 +5,7 @@ class Almacen extends CI_Controller {
 	public function __construct(){
 		parent::__construct();
 		$this->load->model(array('Empresa_model', 'Almacen_model'));
-		$this->load->helper('rfc_helper');
+		$this->load->helper('rfc_helper', 'uuidV4_helper');
   }
 
 	public function index(){

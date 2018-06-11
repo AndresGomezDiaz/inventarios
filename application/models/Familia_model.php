@@ -4,6 +4,7 @@ class Familia_model extends CI_Model {
 	
 	public function __construct(){
 		parent::__construct();
+		$this->load->helper('uuidV4_helper');
 	}
 
 	public function getFamilias($filtro = NULL){
@@ -15,13 +16,14 @@ class Familia_model extends CI_Model {
 	}
 
 	public function getFamilia($id = NULL){
-		$data = array("id_familia"=>$id);
+		$data = array("_uuid "=>$id);
 		$query = $this->getFamilias($data);
 		return $query->row(0);
 	}
 
 	public function createFamilia($data = NULL){
 		if(isset($data)){
+			$data['_uuid'] = uuidv4();
 			$this->db->insert('familia', $data);
 			return array('error' => false, "mensaje" => "La familia se registró correctamente", "registro" => $this->db->insert_id());
 		}else{
@@ -31,7 +33,7 @@ class Familia_model extends CI_Model {
 
 	public function updateFamilia($id = NULL, $data = NULL){
 		if(isset($id)){
-			$this->db->where('id_familia',$id);
+			$this->db->where('_uuid',$id);
 			$this->db->update('familia',$data);
 			return array('error' => false, "mensaje" => "El almacen se edito correctamente");
 		}else{
@@ -41,7 +43,7 @@ class Familia_model extends CI_Model {
 
 	public function deleteAlmacen($id = NULL){
 		if(isset($id)){
-			$this->db->where('id_almacen', $id);
+			$this->db->where('_uuid', $id);
 			$this->db->delete('almacen');
 			return array('error' => false, "mensaje" => "El almacen se eliminó correctamente");
 		}else{

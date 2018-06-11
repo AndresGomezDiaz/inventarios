@@ -21,8 +21,8 @@
 	  <tbody>
 	  		<?php foreach($empresas->result() as $info): ?>
 	  		<td><?=$info->nombre_comercial?></td>
-	  		<td><?=$info->nombre_estatus?></td>
-	  		<td>
+	  		<td><?=$info->rfc?></td>
+	  		<td style="text-align:center;">
 	  			<a href="#"><i class="fa fa-trash"></i></a>&nbsp;&nbsp;&nbsp;
 	  			<a href="#"><i class="fa fa-pencil"></i></a>&nbsp;&nbsp;&nbsp;
 	  		</td>

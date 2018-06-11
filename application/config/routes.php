@@ -73,5 +73,10 @@ $route['almacen'] = 'almacen/Almacen';
 $route['registrar_almacen'] = 'almacen/AlmacenAlta';
 $route['editar_almacen/(:any)'] = 'almacen/AlmacenAlta/editarAlmacen/$1';
 
+// Familias
+$route['familia'] = 'familia/Familia';
+$route['registrar_familia'] = 'familia/FamiliaAlta';
+$route['editar_familia/(:any)'] = 'familia/FamiliaAlta/editarFamilia/$1';
+
 //Codigos postales:
 $route['buscar_municipios'] = 'codigo_postal/CodigoPostal/dimeMunicipios';
