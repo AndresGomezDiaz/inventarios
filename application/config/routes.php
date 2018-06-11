@@ -64,7 +64,7 @@ $route['activar_usuario/(:any)'] = 'usuario/UsuarioAlta/activarUsuario/$1';
 $route['inactivar_usuario/(:any)'] = 'usuario/UsuarioAlta/inactivarUsuario/$1';
 
 // Empresa:
-$route['empresas'] = 'empresa/Empresa';
+$route['empresa'] = 'empresa/Empresa';
 $route['registrar_empresa'] = 'empresa/EmpresaAlta';
 $route['editar_empresa/(:any)'] = 'empresa/EmpresaAlta/editarEmpresa/$1';
 

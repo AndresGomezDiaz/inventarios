@@ -1,12 +1,12 @@
 <?php
 if (!defined('BASEPATH')){ exit('No direct script access allowed'); }
 
-class Empresa extends CI_Controller {
+class EmpresaAlta extends CI_Controller {
 	public function __construct(){
-        parent::__construct();
+    parent::__construct();
 		$this->load->model('Empresa_model');
-		$this->load->helper('rfc_helper');
-    }
+		$this->load->helper(array('form', 'rfc_helper'));
+  }
 
 	public function index(){
 		if($this->session->userdata('perfil') == FALSE){
@@ -45,7 +45,7 @@ class Empresa extends CI_Controller {
 			$this->template->add_css();
 			$this->template->load('default_layout', 'contents' , 'empresa/empresa_alta', $data);
 		}else{
-			redirect(base_url().'empresas');
+			redirect(base_url().'empresa');
 		}
 	}
 
@@ -91,7 +91,7 @@ class Empresa extends CI_Controller {
 								);
 				$this->Empresa_model->createEmpresa($data);
 			}
-			redirect(base_url().'empresas','refresh');
+			redirect(base_url().'empresa','refresh');
 		}
 	}
 

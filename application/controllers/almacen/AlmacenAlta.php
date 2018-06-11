@@ -3,18 +3,16 @@ if (!defined('BASEPATH')){ exit('No direct script access allowed'); }
 
 class Almacen extends CI_Controller {
 	public function __construct(){
-        parent::__construct();
+		parent::__construct();
 		$this->load->model(array('Empresa_model', 'Almacen_model'));
 		$this->load->helper('rfc_helper');
-    }
+  }
 
 	public function index(){
 		if($this->session->userdata('perfil') == FALSE){
 			redirect(base_url().'login');
 		}
-		
 		$empresas = $this->Empresa_model->getEmpresas();
-
 		$data = array(
 					"nomToken"		=> $this->security->get_csrf_token_name(),
 					"valueToken"	=> $this->security->get_csrf_hash(),

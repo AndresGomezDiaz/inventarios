@@ -2,13 +2,12 @@
 if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class Login extends CI_Controller{
-
-    public function __construct(){
-        parent::__construct();
+  public function __construct(){
+    parent::__construct();
 		$this->load->library(array('session','form_validation', 'encryption'));
 		$this->load->helper(array('form'));
 		$this->load->model(array('Login_model'));
-    }
+   }
 
 	public function index(){
 		header("Access-Control-Allow-Origin: *");
@@ -38,11 +37,12 @@ class Login extends CI_Controller{
 					redirect(base_url().'Login','refresh');
 				}else{
 					$data = array(
-								'is_logued_in' 	=> 		TRUE,
-								'perfil'		=>		$infoUsuario['result']->perfil,
-								'nombre' 		=> 		$infoUsuario['result']->nombre,
-								'correo'		=>		$infoUsuario['result']->email,
-								'id'			=>		$infoUsuario['result']->_uuid
+								'is_logued_in' 	=> TRUE,
+								'perfil'				=> $infoUsuario['result']->perfil,
+								'nombre' 				=> $infoUsuario['result']->nombre,
+								'correo'				=> $infoUsuario['result']->email,
+								'id'						=> $infoUsuario['result']->_uuid,
+								'empresa'				=> $infoUsuario['result']->empresa_id
 								);
 					$this->session->set_userdata($data);
 					redirect(base_url().'Home');
