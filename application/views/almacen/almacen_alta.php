@@ -23,16 +23,27 @@ if(isset($registro)){
 				<?php echo form_error('nombre'); ?>
 			</div>
 		</div>
-		<div class="form-group <?php if(form_error('vendedor')){ echo 'has-error'; } ?>">
+		<div class="form-group <?php if(form_error('tipo')){ echo 'has-error'; } ?>">
+			<label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Tipo de almacen:</label>
+			<div class="col-md-6 col-sm-6 col-xs-12">
+				<select name="tipo" id="tipo" estadoattri='' class="form-control col-md-7 col-xs-12" required="required">
+					<option value="">Seleccione</option>	
+					<option value="MP" <?=empty($tipo) ? "" : ($tipo === 'MP') ? "selected" : ""?> >Materia prima</option>
+					<option value="PT" <?=empty($tipo) ? "" : ($tipo === 'PT') ? "selected" : ""?> >Producto terminado</option>
+				</select>
+				<?php echo form_error('tipo'); ?>
+			</div>
+		</div>
+		<div class="form-group <?php if(form_error('empresa')){ echo 'has-error'; } ?>">
 			<label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Empresa:</label>
 			<div class="col-md-6 col-sm-6 col-xs-12">
-				<select name="vendedor" id="vendedor" estadoattri='' class="form-control col-md-7 col-xs-12" required="required">
+				<select name="empresa" id="empresa" estadoattri='' class="form-control col-md-7 col-xs-12" required="required">
 					<option value="">Seleccione</option>
 					<?php foreach($empresas->result() as $infoEmpresa):?>
 					<option value="<?=$infoEmpresa->id?>" <?=empty($empresa) ? "" : ($empresa === $infoEmpresa->id) ? "selected" : ""?> ><?=$infoEmpresa->nombre_comercial?></option>
 					<?php endforeach; ?>
 				</select>
-				<?php echo form_error('vendedor'); ?>
+				<?php echo form_error('empresa'); ?>
 			</div>
 		</div>
 		<div class="ln_solid"></div>

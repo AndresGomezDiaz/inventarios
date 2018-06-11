@@ -38,6 +38,7 @@ class AlmacenAlta extends CI_Controller {
 							"valueToken"		=> $this->security->get_csrf_hash(),
 							"empresa"				=> empty(set_value('empresa')) ? $infoAlmacen->empresa_id : set_value('empresa'),
 							"nombre"				=> empty(set_value('nombre')) ? $infoAlmacen->nombre : set_value('nombre'),
+							"tipo"					=> empty(set_value('tipo')) ? $infoAlmacen->tipo : set_value('tipo'),
 							"empresas"			=> $empresas,
 							"registro"			=> $registro
 							);
@@ -56,12 +57,13 @@ class AlmacenAlta extends CI_Controller {
 		}
 
 		$this->form_validation->set_rules('nombre', 'nombre del almacen', 'required');
-        $this->form_validation->set_rules('empresa', 'empresa a la que esta relacionado el almacen', 'required');
+		$this->form_validation->set_rules('tipo', 'tipo del almacen', 'required');
+		$this->form_validation->set_rules('empresa', 'empresa a la que esta relacionado el almacen', 'required');
 
-        $this->form_validation->set_error_delimiters('<span class="help-block">','</span>');
-        $this->form_validation->set_message('required', 'Este campo es requerido');
+		$this->form_validation->set_error_delimiters('<span class="help-block">','</span>');
+		$this->form_validation->set_message('required', 'Este campo es requerido');
 
-        if($this->form_validation->run() == FALSE){
+		if($this->form_validation->run() == FALSE){
 			if(isset($registro)){
 				$this->editarAlmacen($registro);
 			}else{
@@ -71,12 +73,14 @@ class AlmacenAlta extends CI_Controller {
 			if(isset($registro)){
 				$data = array(
 								"nombre"=>$this->input->post('nombre'),
+								"tipo"=>$this->input->post('tipo'),
 								"empresa_id"=>$this->input->post('empresa')
 								);
 				$this->Almacen_model->updateAlmacen($registro, $data);
 			}else{
 				$data = array(
 								"nombre"=>$this->input->post('nombre'),
+								"tipo"=>$this->input->post('tipo'),
 								"empresa_id"=>$this->input->post('empresa')
 								);
 				$this->Almacen_model->createAlmacen($data);

@@ -16,18 +16,17 @@
 	  <thead>
 	    <tr>
 			<th style="text-align:center">Nombre</th>
-			<th style="text-align:center">Estatus</th>
+			<th style="text-align:center">Tipo</th>
 			<th style="text-align:center">Opciones</th>
 	    </tr>
 	  </thead>
 	  <tbody>
 	  		<?php foreach($almacenes->result() as $info): ?>
 	  		<td><?=$info->nombre?></td>
-	  		<td><?=($info->status == 1) ? 'Activo' : 'Inactivo'?></td>
+	  		<td><?=$info->tipo?></td>
 	  		<td <td style="text-align:center;">>
 	  			<a href="#"><i class="fa fa-trash"></i></a>&nbsp;&nbsp;&nbsp;
 	  			<a href="#"><i class="fa fa-pencil"></i></a>&nbsp;&nbsp;&nbsp;
-	  			<a href="#"><i class="fa fa-ban"></i></a>&nbsp;&nbsp;&nbsp;
 	  		</td>
 	  		<?php endforeach; ?>
 	  </tbody>

@@ -78,5 +78,10 @@ $route['familia'] = 'familia/Familia';
 $route['registrar_familia'] = 'familia/FamiliaAlta';
 $route['editar_familia/(:any)'] = 'familia/FamiliaAlta/editarFamilia/$1';
 
+// Productos
+$route['producto'] = 'producto/Producto';
+$route['registrar_producto'] = 'producto/ProductoAlta';
+$route['editar_producto/(:any)'] = 'producto/ProductoAlta/editarProducto/$1';
+
 //Codigos postales:
 $route['buscar_municipios'] = 'codigo_postal/CodigoPostal/dimeMunicipios';
