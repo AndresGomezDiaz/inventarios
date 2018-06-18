@@ -5,7 +5,7 @@ class Home extends CI_Controller{
     public function __construct(){
         parent::__construct();
 		$this->load->library(array('session','form_validation'));
-		$this->load->model(array('Numero_model','Usuario_model'));
+		$this->load->model(array('Usuario_model'));
     }
 	public function index(){
 		if($this->session->userdata('perfil') == false){

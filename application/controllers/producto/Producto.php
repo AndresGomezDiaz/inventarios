@@ -10,7 +10,7 @@ class Producto extends CI_Controller {
 		if($this->session->userdata('perfil') === FALSE){
 			redirect(base_url().'login');
 		}
-		$productos = $this->Productos_model->getProductos();
+		$productos = $this->Producto_model->getProductos();
 		$data = array("productos" => $productos);
 		
 		$this->template->add_css();

@@ -13,7 +13,7 @@ class Familia extends CI_Controller {
 			redirect(base_url().'login');
 		}
 		$familias = $this->Familia_model->getFamilias();
-		$data = array("familias" => $familias)
+		$data = array("familias" => $familias);
 		
 		$this->template->add_css();
 		$this->template->add_js();

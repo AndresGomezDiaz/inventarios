@@ -21,7 +21,7 @@
 	    </tr>
 	  </thead>
 	  <tbody>
-	  		<?php foreach($almacenes->result() as $info): ?>
+	  		<?php foreach($productos->result() as $info): ?>
 	  		<td><?=$info->nombre?></td>
 	  		<td><?=$info->familia?></td>
 	  		<td <td style="text-align:center;">>
