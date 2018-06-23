@@ -1,11 +1,11 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
-$attributes = array("role"=>"form", "id" => "registrar_familia", "name" => "registrar_familia", "class" => "form-horizontal form-label-left");
+$attributes = array("role"=>"form", "id" => "registrar_unidad", "name" => "registrar_unidad", "class" => "form-horizontal form-label-left");
 if(isset($registro)){ 
-	$ligaUrl = base_url().'familia/FamiliaAlta/guardarFamilia/'.$registro; 
-	$tituloForm = 'Editar familia';
+	$ligaUrl = base_url().'unidad/UnidadAlta/guardarUnidad/'.$registro; 
+	$tituloForm = 'Editar unidad';
 }else{ 
-	$ligaUrl = base_url().'familia/FamiliaAlta/guardarFamilia'; 
-	$tituloForm = 'Registrar familia';
+	$ligaUrl = base_url().'unidad/UnidadAlta/guardarUnidad'; 
+	$tituloForm = 'Registrar unidad';
 }
 ?>
 <div class="x_title">
@@ -16,7 +16,9 @@ if(isset($registro)){
 <div class="x_content">
 	<?=form_open_multipart($ligaUrl,$attributes)?>
 		<input type="hidden" name="liga" id="liga" value="<?=base_url()?>">
-		<div class="form-group <?php if(form_error('nombre')){ echo 'has-error'; } ?>">
+		<div class="form-group <
+
+		?php if(form_error('nombre')){ echo 'has-error'; } ?>">
 			<label class="control-label col-md-3 col-sm-3 col-xs-12">Nombre:</label>
 			<div class="col-md-6 col-sm-6 col-xs-12">
 				<input type="text" id="nombre" name="nombre" required="required" class="form-control col-md-7 col-xs-12" value="<?=$nombre?>">

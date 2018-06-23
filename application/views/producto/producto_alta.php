@@ -23,6 +23,17 @@ if(isset($registro)){
 				<?php echo form_error('nombre'); ?>
 			</div>
 		</div>
+		<div class="form-group <?php if(form_error('tipo')){ echo 'has-error'; } ?>">
+			<label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Tipo de producto:</label>
+			<div class="col-md-6 col-sm-6 col-xs-12">
+				<select name="tipo" id="tipo" estadoattri='' class="form-control col-md-7 col-xs-12" required="required">
+					<option value="">Seleccione</option>	
+					<option value="MP" <?=($tipo === 'MP') ? 'selected' : ''?> >Materia prima</option>
+					<option value="PT" <?=($tipo === 'PM') ? 'selected' : ''?> >Poducto terminado</option>
+				</select>
+				<?php echo form_error('tipo'); ?>
+			</div>
+		</div>
 		<div class="form-group <?php if(form_error('familia')){ echo 'has-error'; } ?>">
 			<label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Familia:</label>
 			<div class="col-md-6 col-sm-6 col-xs-12">
@@ -40,7 +51,7 @@ if(isset($registro)){
 			<div class="col-md-6 col-sm-6 col-xs-12">
 				<select name="unidad" id="unidad" estadoattri='' class="form-control col-md-7 col-xs-12" required="required">
 					<option value="">Seleccione</option>	
-					<?php foreach($familias->result() as $infoUnidad): ?>
+					<?php foreach($unidades->result() as $infoUnidad): ?>
 						<option value="<?=$infoUnidad->id?>"><?=$infoUnidad->nombre?></option>
 					<?php endforeach; ?>
 				</select>
@@ -52,7 +63,7 @@ if(isset($registro)){
 			<div class="col-md-6 col-sm-6 col-xs-12">
 				<select name="presentacion" id="presentacion" estadoattri='' class="form-control col-md-7 col-xs-12" required="required">
 					<option value="">Seleccione</option>	
-					<?php foreach($familias->result() as $infopresentacion): ?>
+					<?php foreach($presentaciones->result() as $infopresentacion): ?>
 						<option value="<?=$infopresentacion->id?>"><?=$infopresentacion->nombre?></option>
 					<?php endforeach; ?>
 				</select>

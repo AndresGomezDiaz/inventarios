@@ -31,21 +31,28 @@
               <div class="menu_section">
                 <ul class="nav side-menu">
                   <li><a href="<?=base_url().'home'?>"><i class="fa fa-home"></i> Home</a></li>
-                  <li><a href="<?=base_url().'empresa'?>"><i class="fa fa-home"></i> Empresa</a></li>
-                  <li><a href="<?=base_url().'almacen'?>"><i class="fa fa-home"></i> Almacen</a></li>
-                  <li><a><i class="fa fa-users"></i> Producto <span class="fa fa-chevron-down"></span></a>
+                  <li><a href="<?=base_url().'empresa'?>"><i class="fa fa-building"></i> Empresa</a></li>
+                  <li><a href="<?=base_url().'almacen'?>"><i class="fa fa-archive"></i> Almacen</a></li>
+                  <li><a><i class="fa fa-folder-open"></i> Producto <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="<?=base_url().'familia'?>">Familia</a></li>
                       <li><a href="<?=base_url().'producto'?>">Productos</a></li>
                       <li><a href="<?=base_url().'home'?>">Recetas</a></li>
                     </ul>
                   </li>
-                  <li><a href="<?=base_url().'home'?>"><i class="fa fa-home"></i> Proveedor</a></li>
-                  <li><a><i class="fa fa-users"></i> Inventario <span class="fa fa-chevron-down"></span></a>
+                  <li><a href="<?=base_url().'home'?>"><i class="fa fa-globe"></i> Proveedor</a></li>
+                  <li><a><i class="fa fa-barcode"></i> Inventario <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="<?=base_url().'home'?>">Entradas</a></li>
                       <li><a href="<?=base_url().'home'?>">Salidas</a></li>
                       <li><a href="<?=base_url().'home'?>">Traspasos</a></li>
+                    </ul>
+                  </li>
+                  <li><a><i class="fa fa-sliders"></i> Miselanos <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="<?=base_url().'familia'?>">Familia</a></li>
+                      <li><a href="<?=base_url().'unidad'?>">Unidad</a></li>
+                      <li><a href="<?=base_url().'presentacion'?>">Presentación</a></li>
+                      <li><a href="<?=base_url().'accesorio'?>">Accesorio</a></li>
                     </ul>
                   </li>
                   <li><a href="<?=base_url().'home'?>"><i class="fa fa-users"></i> Usuarios</a></li>

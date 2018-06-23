@@ -73,11 +73,6 @@ $route['almacen'] = 'almacen/Almacen';
 $route['registrar_almacen'] = 'almacen/AlmacenAlta';
 $route['editar_almacen/(:any)'] = 'almacen/AlmacenAlta/editarAlmacen/$1';
 
-// Familias
-$route['familia'] = 'familia/Familia';
-$route['registrar_familia'] = 'familia/FamiliaAlta';
-$route['editar_familia/(:any)'] = 'familia/FamiliaAlta/editarFamilia/$1';
-
 // Productos
 $route['producto'] = 'producto/Producto';
 $route['registrar_producto'] = 'producto/ProductoAlta';
@@ -85,3 +80,17 @@ $route['editar_producto/(:any)'] = 'producto/ProductoAlta/editarProducto/$1';
 
 //Codigos postales:
 $route['buscar_municipios'] = 'codigo_postal/CodigoPostal/dimeMunicipios';
+
+// Miselaneos
+// Familias
+$route['familia'] = 'familia/Familia';
+$route['registrar_familia'] = 'familia/FamiliaAlta';
+$route['editar_familia/(:any)'] = 'familia/FamiliaAlta/editarFamilia/$1';
+// Unidades
+$route['unidad'] = 'unidad/Unidad';
+$route['registrar_unidad'] = 'unidad/UnidadAlta';
+$route['editar_unidad/(:any)'] = 'unidad/UnidadAlta/editarUnidad/$1';
+// Presentacion
+$route['presentacion'] = 'presentacion/Presentacion';
+$route['registrar_presentacion'] = 'presentacion/PresentacionAlta';
+$route['editar_presentacion/(:any)'] = 'presentacion/PresentacionAlta/editarPresentacion/$1';

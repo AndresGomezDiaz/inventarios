@@ -1,10 +1,9 @@
 <?php
 if (!defined('BASEPATH')){ exit('No direct script access allowed'); }
-class FamiliaAlta extends CI_Controller {
+class UnidadAlta extends CI_Controller {
 	public function __construct(){
     parent::__construct();
-		$this->load->model('Familia_model');
-    	$this->load->helper('uuidV4_helper');
+		$this->load->model('Unidad_model');
   	}
 	public function index(){
 		if($this->session->userdata('perfil') == FALSE){
@@ -15,35 +14,36 @@ class FamiliaAlta extends CI_Controller {
 					"valueToken"		=> $this->security->get_csrf_hash(),
 					"nombre"	=> empty(set_value('nombre')) ? "" : set_value('nombre'),
 					);
+
 		$this->template->add_css();
 		$this->template->add_js();
-		$this->template->load('default_layout', 'contents' , 'familia/familia_alta', $data);
+		$this->template->load('default_layout', 'contents' , 'unidad/unidad_alta', $data);
 	}
-	public function editarFamilia($registro = NULL){
+	public function editarUnidad($registro = NULL){
 		if($this->session->userdata('perfil') == false){
 			redirect(base_url().'Login');
 		}
 		if(isset($registro)){
-			$infoFamilia = $this->Familia_model->getFamilia($registro);
+			$infoUnidad = $this->Unidad_model->getUnidad($registro);
 			$data = array(
 							"nomToken"			=> $this->security->get_csrf_token_name(),
 							"valueToken"		=> $this->security->get_csrf_hash(),
-							"nombre"				=> empty(set_value('nombre')) ? $infoFamilia->nombre : set_value('nombre'),
+							"nombre"				=> empty(set_value('nombre')) ? $infoUnidad->nombre : set_value('nombre'),
 							"registro"			=> $registro
 							);
 
 			$this->template->add_js();
 			$this->template->add_css();
-			$this->template->load('default_layout', 'contents' , 'familia/familia_alta', $data);
+			$this->template->load('default_layout', 'contents' , 'unidad/unidad_alta', $data);
 		}else{
-			redirect(base_url().'familia');
+			redirect(base_url().'unidad');
 		}
 	}
-	public function guardarFamilia($registro = NULL){
+	public function guardarUnidad($registro = NULL){
 		if($this->session->userdata('perfil') == false){
 			redirect(base_url().'Login');
 		}
-		$this->form_validation->set_rules('nombre', 'nombre de la familia', 'required');
+		$this->form_validation->set_rules('nombre', 'nombre de la unidad', 'required');
 	    $this->form_validation->set_error_delimiters('<span class="help-block">','</span>');
 	    $this->form_validation->set_message('required', 'Este campo es requerido');
 	    if($this->form_validation->run() == FALSE){
@@ -60,7 +60,7 @@ class FamiliaAlta extends CI_Controller {
 				$data = array("nombre"=>$this->input->post('nombre'));
 				$this->Familia_model->createFamilia($data);
 			}
-			redirect(base_url().'familia','refresh');
+			redirect(base_url().'unidad','refresh');
 		}
 	}
 }

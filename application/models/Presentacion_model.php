@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Familia_model extends CI_Model {
+class Presentacion_model extends CI_Model {
 	
 	public function __construct(){
 		parent::__construct();
@@ -24,47 +24,47 @@ class Familia_model extends CI_Model {
 						);
 	}
 
-	public function getFamilias($filtro = NULL){
+	public function getPresentaciones($filtro = NULL){
 		if(isset($filtro)){
 			$this->db->where($filtro);
 		}
-		$query = $this->db->get('familia');
+		$query = $this->db->get('presentacion');
 		return $query;
 	}
 
-	public function getFamilia($id = NULL){
+	public function getPresentacion($id = NULL){
 		$data = array("_uuid "=>$id);
-		$query = $this->getFamilias($data);
+		$query = $this->getPresentaciones($data);
 		return $query->row(0);
 	}
 
-	public function createFamilia($data = NULL){
+	public function createPresentacion($data = NULL){
 		if(isset($data)){
 			$data['_uuid'] = $this->uuidv4();
-			$this->db->insert('familia', $data);
-			return array('error' => false, "mensaje" => "La familia se registró correctamente", "registro" => $this->db->insert_id());
+			$this->db->insert('presentacion', $data);
+			return array('error' => false, "mensaje" => "La presentación se registró correctamente", "registro" => $this->db->insert_id());
 		}else{
-			return array('error' => true, "mensaje" => "Error al registrar la familia, faltan datos.");
+			return array('error' => true, "mensaje" => "Error al registrar la presentación, faltan datos.");
 		}
 	}
 
-	public function updateFamilia($id = NULL, $data = NULL){
+	public function updatePresentacion($id = NULL, $data = NULL){
 		if(isset($id)){
 			$this->db->where('_uuid',$id);
-			$this->db->update('familia',$data);
-			return array('error' => false, "mensaje" => "La familia se edito correctamente");
+			$this->db->update('presentacion',$data);
+			return array('error' => false, "mensaje" => "La presentación se edito correctamente");
 		}else{
-			return array('error' => true, "mensaje" => "Error al registrar la familia, faltan datos");
+			return array('error' => true, "mensaje" => "Error al registrar la presentación, faltan datos");
 		}
 	}
 
-	public function deleteFamilia($id = NULL){
+	public function deletePresentacion($id = NULL){
 		if(isset($id)){
 			$this->db->where('_uuid', $id);
-			$this->db->delete('familia');
-			return array('error' => false, "mensaje" => "La familia se eliminó correctamente");
+			$this->db->delete('presentacion');
+			return array('error' => false, "mensaje" => "La presentacion se eliminó correctamente");
 		}else{
-			return array('error' => true, "mensaje" => "Error al borrar la familia, faltan registro");
+			return array('error' => true, "mensaje" => "Error al borrar la presentacion, faltan registro");
 		}
 	}
 }

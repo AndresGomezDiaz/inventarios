@@ -3,18 +3,21 @@ if (!defined('BASEPATH')){ exit('No direct script access allowed'); }
 class ProductoAlta extends CI_Controller {
 	public function __construct(){
 		parent::__construct();
-		$this->load->model(array('Producto_model', 'Familia_model'));
+		$this->load->model(array('Producto_model', 'Familia_model', 'Unidad_model', 'Presentacion_model'));
   	}
 	public function index(){
 		if($this->session->userdata('perfil') == FALSE){
 			redirect(base_url().'login');
 		}
 		$familias = $this->Familia_model->getFamilias();
-		$unidades = $this->Familia_model->getFamilias();
+		$unidades = $this->Unidad_model->getUnidades();
+		$presentaciones = $this->Presentacion_model->getPresentaciones();
+
 		$data = array(
 					"nomToken"		           	=> $this->security->get_csrf_token_name(),
 					"valueToken"	           	=> $this->security->get_csrf_hash(),
 					"nombre"			   		=> empty(set_value('nombre')) ? "" : set_value('nombre'),
+					"tipo"						=> empty(set_value('tipo')) ? "" : set_value('tipo'),
 					"descripcion"				=> empty(set_value('descripcion')) ? "" : set_value('descripcion'),
 					"unidad"			   		=> empty(set_value('unidad')) ? "" : set_value('unidad'),
 					"presentacion"				=> empty(set_value('presentacion')) ? "" : set_value('presentacion'),
@@ -23,7 +26,8 @@ class ProductoAlta extends CI_Controller {
 					"precio_venta"			    => empty(set_value('precio_venta')) ? "" : set_value('precio_venta'),
 					"familia"			        => empty(set_value('familia')) ? "" : set_value('familia'),
 					"familias"		           	=> $familias,
-					"unidades"					=> $unidades
+					"unidades"					=> $unidades,
+					"presentaciones"			=> $presentaciones
 		);
 
 		$this->template->add_css();
@@ -37,12 +41,13 @@ class ProductoAlta extends CI_Controller {
 		if(isset($registro)){
 			$infoProducto = $this->Producto_model->getProducto($registro);
 			$familias = $this->Familia_model->getFamilias();
-			$unidades = $this->Familia_model->getFamilias();
-
+			$unidades = $this->Unidad_model->getUnidades();
+			$presentaciones = $this->Presentacion_model->getPresentacion();
 			$data = array(
 							"nomToken"			        => $this->security->get_csrf_token_name(),
 							"valueToken"		        => $this->security->get_csrf_hash(),
 							"nombre"				    => empty(set_value('nombre')) ? $infoProducto->nombre : set_value('nombre'),
+							"tipo"					    => empty(set_value('tipo')) ? $infoProducto->tipo : set_value('tipo'),
 							"descripcion"				=> empty(set_value('descripcion')) ? $infoProducto->descripcion : set_value('descripcion'),
 							"unidad"				    => empty(set_value('unidad')) ? $infoProducto->unidad : set_value('unidad'),
 							"presentacion"				=> empty(set_value('presentacion')) ? $infoProducto->presentacion : set_value('presentacion'),
@@ -52,12 +57,14 @@ class ProductoAlta extends CI_Controller {
 							"familia"				    => empty(set_value('familia')) ? $infoProducto->familia_id : set_value('familia'),
 							"familias"			        => $familias,
 							"unidades"					=> $unidades,
+							"presentaciones"			=> $presentaciones,
 							"registro"			        => $registro
 							);
 			$this->template->add_js();
 			$this->template->add_css();
 			$this->template->load('default_layout', 'contents' , 'producto/producto_alta', $data);
 		}else{
+
 			redirect(base_url().'producto');
 		}
 	}
@@ -66,6 +73,7 @@ class ProductoAlta extends CI_Controller {
 			redirect(base_url().'Login');
 		}
 		$this->form_validation->set_rules('nombre', 'nombre del producto', 'required');
+		$this->form_validation->set_rules('tipo', 'tipo del producto', 'required');
 		$this->form_validation->set_rules('descripcion', 'descripcion del producto', 'required');
 		$this->form_validation->set_rules('unidad', 'unidad del producto', 'required');
 		$this->form_validation->set_rules('presentacion', 'presentacion del producto', 'required');
@@ -85,6 +93,7 @@ class ProductoAlta extends CI_Controller {
 			if(isset($registro)){
 				$data = array(
 								"nombre"					=>$this->input->post('nombre'),
+								"tipo"						=>$this->input->post('tipo'),
 								"descripcion"				=>$this->input->post('descripcion'),
 								"unidad"					=>$this->input->post('unidad'),
 								"presentacion"				=>$this->input->post('presentacion'),
@@ -97,13 +106,13 @@ class ProductoAlta extends CI_Controller {
 			}else{
 				$data = array(
 			                  "nombre"					=>$this->input->post('nombre'),
+			                  "tipo"					=>$this->input->post('tipo'),
 			                  "descripcion"				=>$this->input->post('descripcion'),
 			                  "unidad"					=>$this->input->post('unidad'),
 			                  "presentacion"			=>$this->input->post('presentacion'),
 			                  "cantidad_x_presentacion"	=>$this->input->post('cantidad_x_presentacion'),
 			                  "precio_costo"			=>$this->input->post('precio_costo'),
 			                  "precio_venta"			=>$this->input->post('precio_venta'),
-			                  "tipo"					=>"MP",
 			                  "familia_id"				=>$this->input->post('familia')
 								);
 				$this->Producto_model->createProducto($data);
