@@ -1,5 +1,4 @@
 <?php if (!defined('BASEPATH')){ exit('No direct script access allowed'); }
-
 if(!function_exists('uuidv4')){
 	function uuidv4(){
 		return sprintf('%04x%04x-%04x-%04x-%04x-%04x%04x%04x',
@@ -19,3 +18,4 @@ if(!function_exists('uuidv4')){
 		);
 	}
 }
+?>

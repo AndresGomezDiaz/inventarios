@@ -4,7 +4,24 @@ class Almacen_model extends CI_Model {
 	
 	public function __construct(){
 		parent::__construct();
-		$this->load->helper('uuidV4_helper');
+	}
+
+	private function uuidv4(){
+		return sprintf('%04x%04x-%04x-%04x-%04x-%04x%04x%04x',
+						// 32 bits for "time_low"
+						mt_rand(0, 0xffff), mt_rand(0, 0xffff),
+						// 16 bits for "time_mid"
+						mt_rand(0, 0xffff),
+						// 16 bits for "time_hi_and_version",
+						// four most significant bits holds version number 4
+						mt_rand(0, 0x0fff) | 0x4000,
+						// 16 bits, 8 bits for "clk_seq_hi_res",
+						// 8 bits for "clk_seq_low",
+						// two most significant bits holds zero and one for variant DCE1.1
+						mt_rand(0, 0x3fff) | 0x8000,
+						// 48 bits for "node"
+						mt_rand(0, 0xffff), mt_rand(0, 0xffff), mt_rand(0, 0xffff)
+						);
 	}
 
 	public function getAlmacenes($filtro = NULL){
@@ -23,7 +40,7 @@ class Almacen_model extends CI_Model {
 
 	public function createAlmacen($data = NULL){
 		if(isset($data)){
-			$data['_uuid'] = uuidv4();
+			$data['_uuid'] = $this->uuidv4();
 			$this->db->insert('almacen', $data);
 			return array('error' => false, "mensaje" => "El almacen se registró correctamente", "registro" => $this->db->insert_id());
 		}else{

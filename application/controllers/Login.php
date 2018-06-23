@@ -1,14 +1,12 @@
 <?php
 if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-
 class Login extends CI_Controller{
-  public function __construct(){
-    parent::__construct();
+  	public function __construct(){
+    	parent::__construct();
 		$this->load->library(array('session','form_validation', 'encryption'));
 		$this->load->helper(array('form'));
 		$this->load->model(array('Login_model'));
-   }
-
+	}
 	public function index(){
 		header("Access-Control-Allow-Origin: *");
 		if($this->session->userdata('perfil') == ""){
@@ -19,7 +17,6 @@ class Login extends CI_Controller{
 			redirect(base_url().'Home');
 		}
 	}
-
 	public function acceso(){
 		if($this->input->post('token') && $this->input->post('token') == $this->session->userdata('token')){
             $this->form_validation->set_rules('usuario', 'nombre de usuario', 'trim|required|valid_email|xss_clean');
@@ -37,11 +34,11 @@ class Login extends CI_Controller{
 					redirect(base_url().'Login','refresh');
 				}else{
 					$data = array(
-								'is_logued_in' 	=> TRUE,
+								'is_logued_in' 			=> TRUE,
 								'perfil'				=> $infoUsuario['result']->perfil,
 								'nombre' 				=> $infoUsuario['result']->nombre,
 								'correo'				=> $infoUsuario['result']->email,
-								'id'						=> $infoUsuario['result']->_uuid,
+								'id'					=> $infoUsuario['result']->_uuid,
 								'empresa'				=> $infoUsuario['result']->empresa_id
 								);
 					$this->session->set_userdata($data);
@@ -53,7 +50,6 @@ class Login extends CI_Controller{
 			redirect(base_url().'Login');
 		}
 	}
-
 	public function token(){
 		$token = md5(uniqid(rand(),true));
 		$this->session->set_userdata('token',$token);
